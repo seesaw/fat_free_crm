@@ -279,7 +279,7 @@ module ApplicationHelper
           $('#loading').hide();
         });
       }
-    }
+    }.html_safe
   end
 
   #----------------------------------------------------------------------------
@@ -294,14 +294,14 @@ module ApplicationHelper
             $('#loading').hide();
           });
         }
-      } + "}}"
+      }.html_safe + "}}"
   end
 
   # Ajax helper to pass browser timezone offset to the server.
   #----------------------------------------------------------------------------
   def get_browser_timezone_offset
     unless session[:timezone_offset]
-      "$.get('#{timezone_path}', {offset: (new Date()).getTimezoneOffset()});"
+      "$.get('#{timezone_path}', {offset: (new Date()).getTimezoneOffset()});".html_safe
     end
   end
 
